@@ -29,10 +29,9 @@ def webServer(port=13331):
       #Plenty of guidance online on how to open and read a file in python. How should you read it though if you plan on sending it through a socket?
       f = open(filename[1:]) 
       #fill in start 
-      outputdata = f.read()
       #fill in end
       
-      #outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
       #Fill in start -This variable can store your headers you want to send for any valid or invalid request. 
       #Content-Type above is an example on how to send a header as bytes
       #Fill in end
@@ -47,9 +46,9 @@ def webServer(port=13331):
                
       #Send the content of the requested file to the client
       #for i in outputdata: #for line in file
-      for i in range(0,len(outputdata)): #for line in file
+      for i in f: #for line in file
    
-          connectionSocket.send(outputdata[i])
+          connectionSocket.send(i)
         #Fill in start - send your html file contents #Fill in end 
         
       connectionSocket.close() #closing the connection socket
